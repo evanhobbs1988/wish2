@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{item.item_name}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous"> {% load static %}
+    <link rel="stylesheet" href="{% static 'wishlist/css/style.css' %}">
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <nav class="navbar navbar-light bg-light">
+                <div class="container">
+                    <span class="navbar-brand">Hello, {{request.session.welcome_name}}!</span>
+                    <div class="form-inline">
+                        <a href="/dashboard" class="badge badge-secondary">Home</a>
+                        <a href="/logout" class="badge badge-info">Log Out</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            <h1>{{this_item.item_name}}</h1>
+            <p>others with this item</p>
+            <ul>
+                {% for i in added_by %}
+                <li>{{i.name}}</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

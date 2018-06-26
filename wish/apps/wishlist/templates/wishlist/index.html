@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login and Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous"> {% load static %}
+    <link rel="stylesheet" href="{% static 'wishlist/css/style.css' %}">
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <!-- LOGIN -->
+        <div class="container col">
+            <h2>Login</h2>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="/login" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control form-control-sm" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control form-control-sm" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    <div id="wrapper">
+
+        <div class="row">
+            <!-- REGISTER -->
+            <div class="container col">
+                <h2>Register</h2>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <form action="/register" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control form-control-sm" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control form-control-sm" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="initial_pw">Password</label>
+                        <input type="password" class="form-control form-control-sm" name="initial_pw">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_pw">Confirm Password</label>
+                        <input type="password" class="form-control form-control-sm" name="confirm_pw">
+                    </div>
+                    <div class="form-group">
+                        <label for="date_hired">Date Hired</label>
+                        <input type="date" class="form-control form-control-sm" name="date_hired">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </form>
+            </div>
+        </div>
+</body>
+
+</html>
